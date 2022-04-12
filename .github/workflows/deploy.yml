@@ -7,22 +7,29 @@ on:
     branches: [ master ]
 
 jobs:
-  eslint:
+  eslint_and_deploy:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [ 16.x ]
+
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: npm ci, eslint
         run: |
           npm ci
           npm run lint
+
       - name: deploy to github pages
-        uses: yurich30/west-solutions-test
+        uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./build
