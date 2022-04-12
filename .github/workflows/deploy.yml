@@ -27,6 +27,7 @@ jobs:
         run: |
           npm ci
           npm run lint
+          npm run build
 
       - name: deploy to github pages
         uses: peaceiris/actions-gh-pages@v3
