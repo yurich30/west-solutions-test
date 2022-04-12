@@ -1,0 +1,17 @@
+{
+  "extends": ["airbnb", "airbnb-typescript"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".tsx", ".ts"] }
+    ],
+    "react/button-has-type": "off",
+    "no-param-reassign": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off"
+  }
+}
