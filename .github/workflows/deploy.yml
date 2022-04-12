@@ -22,9 +22,9 @@ jobs:
           npm ci
           npm run lint
       - name: deploy to github pages
-        uses: yurich30/west-solutions-test
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./build
-        run: npm run deploy
+        run: |
+          npm run deploy
 
