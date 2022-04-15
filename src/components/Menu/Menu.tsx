@@ -14,25 +14,34 @@ import MenuItem from '@mui/material/MenuItem';
 
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
+import { useAppDispatch } from '../../store/hooks';
+import {
+  authFetching,
+  authFetchingError,
+  authFetchingSucces,
+} from '../../store/reducers/authReducer';
 
 const pages = ['News'];
 const settings = ['Profile', 'Logout'];
 
-const logOut = async () => {
-  try {
-    await signOut(auth);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 function AppMenu() {
+  const dispatch = useAppDispatch();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null,
   );
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null,
   );
+
+  const logOut = async () => {
+    try {
+      dispatch(authFetching());
+      await signOut(auth);
+      dispatch(authFetchingSucces({}));
+    } catch (error) {
+      dispatch(authFetchingError(error));
+    }
+  };
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);

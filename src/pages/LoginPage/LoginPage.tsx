@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
+import { useAppDispatch } from '../../store/hooks';
+import {
+  authFetching,
+  authFetchingError,
+  authFetchingSucces,
+} from '../../store/reducers/authReducer';
 
 function LoginPage() {
+  const dispatch = useAppDispatch();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
   const signIn = async () => {
     try {
+      dispatch(authFetching());
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
@@ -15,10 +23,12 @@ function LoginPage() {
       );
       const { user } = userCredential;
       console.log(user);
+      dispatch(authFetchingSucces(user));
       setEmail('');
       setPassword('');
     } catch (error) {
       console.log(error);
+      dispatch(authFetchingError(error));
     }
   };
 

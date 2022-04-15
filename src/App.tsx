@@ -1,19 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import LoginPage from './pages/LoginPage/LoginPage';
 import AppMenu from './components/Menu/Menu';
+import { useAppDispatch } from './store/hooks';
 import { auth } from './firebase';
+import { authFetchingSucces } from './store/reducers/authReducer';
 
 function App() {
-  useEffect(() => {
-    onAuthStateChanged(auth, user => {
-      if (user) {
-        const { uid } = user;
-        console.log(uid);
-      } else {
-        console.log('User is signed out');
-      }
-    });
+  const dispatch = useAppDispatch();
+
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      dispatch(authFetchingSucces(user));
+    } else {
+      // redirect
+    }
   });
 
   return (
