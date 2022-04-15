@@ -22,12 +22,10 @@ function LoginPage() {
         password,
       );
       const { user } = userCredential;
-      console.log(user);
       dispatch(authFetchingSucces(user));
       setEmail('');
       setPassword('');
     } catch (error) {
-      console.log(error);
       dispatch(authFetchingError(error));
     }
   };
