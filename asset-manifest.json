@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/west-solutions-test/static/css/main.d062b9eb.css",
-    "main.js": "/west-solutions-test/static/js/main.55250eef.js",
+    "main.js": "/west-solutions-test/static/js/main.e66d4e6d.js",
     "static/js/787.ce5692dd.chunk.js": "/west-solutions-test/static/js/787.ce5692dd.chunk.js",
     "index.html": "/west-solutions-test/index.html",
     "main.d062b9eb.css.map": "/west-solutions-test/static/css/main.d062b9eb.css.map",
-    "main.55250eef.js.map": "/west-solutions-test/static/js/main.55250eef.js.map",
+    "main.e66d4e6d.js.map": "/west-solutions-test/static/js/main.e66d4e6d.js.map",
     "787.ce5692dd.chunk.js.map": "/west-solutions-test/static/js/787.ce5692dd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d062b9eb.css",
-    "static/js/main.55250eef.js"
+    "static/js/main.e66d4e6d.js"
   ]
 }
