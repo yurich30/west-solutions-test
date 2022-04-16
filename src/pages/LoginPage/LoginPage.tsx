@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase';
 import { useAppDispatch } from '../../store/hooks';
 import {
@@ -10,6 +11,7 @@ import {
 
 function LoginPage() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -25,6 +27,7 @@ function LoginPage() {
       dispatch(authFetchingSucces(user));
       setEmail('');
       setPassword('');
+      navigate('/profile');
     } catch (error) {
       dispatch(authFetchingError(error));
     }

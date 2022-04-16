@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
 import { signOut } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 import { auth } from '../../firebase';
 import { useAppDispatch } from '../../store/hooks';
 import {
@@ -21,8 +22,7 @@ import {
   authFetchingSucces,
 } from '../../store/reducers/authReducer';
 
-const pages = ['News'];
-const settings = ['Profile', 'Logout'];
+const pages = [{ name: 'News', path: '/news' }];
 
 function AppMenu() {
   const dispatch = useAppDispatch();
@@ -62,14 +62,16 @@ function AppMenu() {
     <AppBar position='static'>
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
-          <Typography
-            variant='h6'
-            noWrap
-            component='div'
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            <img alt='logo' src='https://wwwest.solutions/logo.png' />
-          </Typography>
+          <Link to='/'>
+            <Typography
+              variant='h6'
+              noWrap
+              component='div'
+              sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            >
+              <img alt='logo' src='https://wwwest.solutions/logo.png' />
+            </Typography>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -101,9 +103,11 @@ function AppMenu() {
               }}
             >
               {pages.map(page => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign='center'>{page}</Typography>
-                </MenuItem>
+                <Link to={page.path}>
+                  <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                    <Typography textAlign='center'>{page.name}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
@@ -117,13 +121,15 @@ function AppMenu() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map(page => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+              <Link to={page.path}>
+                <Button
+                  key={page.name}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page.name}
+                </Button>
+              </Link>
             ))}
           </Box>
 
@@ -149,21 +155,19 @@ function AppMenu() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting, index) => (
-                <MenuItem
-                  key={setting}
-                  onClick={
-                    index === 1
-                      ? () => {
-                          handleCloseUserMenu();
-                          logOut();
-                        }
-                      : () => handleCloseUserMenu()
-                  }
-                >
-                  <Typography textAlign='center'>{setting}</Typography>
+              <Link to='/profile'>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign='center'>Profile</Typography>
                 </MenuItem>
-              ))}
+              </Link>
+              <MenuItem
+                onClick={() => {
+                  handleCloseUserMenu();
+                  logOut();
+                }}
+              >
+                <Typography textAlign='center'>Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

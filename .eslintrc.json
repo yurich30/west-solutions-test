@@ -11,6 +11,7 @@
     ],
     "react/button-has-type": "off",
     "no-param-reassign": "off",
+    "no-extra-boolean-cast": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off"

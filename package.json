@@ -1,7 +1,7 @@
 {
   "name": "west-solutions",
   "version": "0.1.0",
-  "homepage": "https://yurich30.github.io/west-solutions-test",
+  "homepage": "https://yurich30.github.io/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -21,6 +21,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-redux": "^7.2.8",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.6.3",
     "web-vitals": "^2.1.4"
