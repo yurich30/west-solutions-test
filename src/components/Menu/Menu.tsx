@@ -103,7 +103,7 @@ function AppMenu() {
               }}
             >
               {pages.map(page => (
-                <Link to={page.path}>
+                <Link key={page.name} to={page.path}>
                   <MenuItem key={page.name} onClick={handleCloseNavMenu}>
                     <Typography textAlign='center'>{page.name}</Typography>
                   </MenuItem>
@@ -121,7 +121,7 @@ function AppMenu() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map(page => (
-              <Link to={page.path}>
+              <Link key={page.name} to={page.path}>
                 <Button
                   key={page.name}
                   onClick={handleCloseNavMenu}
