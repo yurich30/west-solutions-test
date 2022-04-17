@@ -11,9 +11,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-
 import { signOut } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { CustomLink } from '../CustomComponents/CustomLink.styled';
 import { auth } from '../../firebase';
 import { useAppDispatch } from '../../store/hooks';
 import {
@@ -62,16 +61,17 @@ function AppMenu() {
     <AppBar position='static'>
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
-          <Link to='/'>
+          <CustomLink to='/'>
             <Typography
               variant='h6'
               noWrap
               component='div'
+              color='#fff'
               sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
             >
               <img alt='logo' src='https://wwwest.solutions/logo.png' />
             </Typography>
-          </Link>
+          </CustomLink>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -103,25 +103,31 @@ function AppMenu() {
               }}
             >
               {pages.map(page => (
-                <Link key={page.name} to={page.path}>
+                <CustomLink key={page.name} to={page.path}>
                   <MenuItem key={page.name} onClick={handleCloseNavMenu}>
-                    <Typography textAlign='center'>{page.name}</Typography>
+                    <Typography textAlign='center' color='#000000de'>
+                      {page.name}
+                    </Typography>
                   </MenuItem>
-                </Link>
+                </CustomLink>
               ))}
             </Menu>
           </Box>
+
           <Typography
             variant='h6'
             noWrap
             component='div'
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            <img alt='logo' src='https://wwwest.solutions/logo.png' />
+            <CustomLink to='/'>
+              <img alt='logo' src='https://wwwest.solutions/logo.png' />
+            </CustomLink>
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map(page => (
-              <Link key={page.name} to={page.path}>
+              <CustomLink key={page.name} to={page.path}>
                 <Button
                   key={page.name}
                   onClick={handleCloseNavMenu}
@@ -129,7 +135,7 @@ function AppMenu() {
                 >
                   {page.name}
                 </Button>
-              </Link>
+              </CustomLink>
             ))}
           </Box>
 
@@ -155,11 +161,13 @@ function AppMenu() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <Link to='/profile'>
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign='center'>Profile</Typography>
-                </MenuItem>
-              </Link>
+              <MenuItem onClick={handleCloseUserMenu}>
+                <CustomLink to='/profile'>
+                  <Typography textAlign='center' color='#000000de'>
+                    Profile
+                  </Typography>
+                </CustomLink>
+              </MenuItem>
               <MenuItem
                 onClick={() => {
                   handleCloseUserMenu();
