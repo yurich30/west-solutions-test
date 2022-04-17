@@ -10,6 +10,7 @@
       { "extensions": [".js", ".jsx", ".tsx", ".ts"] }
     ],
     "react/button-has-type": "off",
+    "react/jsx-props-no-spreading": "off",
     "no-param-reassign": "off",
     "no-extra-boolean-cast": "off",
     "import/extensions": "off",
