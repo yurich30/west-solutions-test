@@ -1,4 +1,6 @@
 import React from 'react';
+// @ts-ignore
+import { CubeGrid } from 'styled-loaders-react';
 import { useGetHeadlinesByCountryQuery } from '../../store/reducers/newsApi';
 import NewsList from '../../components/News/NewsList';
 import { CustomContainer } from './NewsPage.styled';
@@ -8,7 +10,7 @@ function NewsPage() {
 
   return (
     <CustomContainer maxWidth='xl'>
-      {isLoading && <div>loading</div>}
+      {isLoading && <CubeGrid color='#1976d2' />}
       {data && <NewsList newsList={data} />}
       {error && <div>error</div>}
     </CustomContainer>

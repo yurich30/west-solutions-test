@@ -44,7 +44,7 @@ function NewsCard({ article }: NewsCardProps) {
         component='img'
         height='194'
         image={urlToImage || imageMock}
-        alt='Paella dish'
+        alt={title}
       />
       <CardContent>
         <Typography variant='body2' color='text.secondary'>
