@@ -11,19 +11,15 @@ function NewsPage() {
   const { data, error, isLoading } = useGetHeadlinesByCountryQuery('us');
 
   const toastMess = () =>
-    toast.error(
-      // @ts-ignore
-      `${error.data.message}`,
-      {
-        position: 'top-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      },
-    );
+    toast.error('Something went wrong refresh the page or inform our support', {
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   return (
     <CustomContainer maxWidth='xl'>

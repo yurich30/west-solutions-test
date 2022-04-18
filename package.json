@@ -1,7 +1,6 @@
 {
   "name": "west-solutions",
   "version": "0.1.0",
-  "homepage": "https://yurich30.github.io/west-solutions-test",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
