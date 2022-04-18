@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.c130e6d7.css",
-    "main.js": "/static/js/main.c2201743.js",
-    "static/js/787.ce5692dd.chunk.js": "/static/js/787.ce5692dd.chunk.js",
-    "index.html": "/index.html",
-    "main.c130e6d7.css.map": "/static/css/main.c130e6d7.css.map",
-    "main.c2201743.js.map": "/static/js/main.c2201743.js.map",
-    "787.ce5692dd.chunk.js.map": "/static/js/787.ce5692dd.chunk.js.map"
+    "main.css": "/west-solutions-test/static/css/main.c130e6d7.css",
+    "main.js": "/west-solutions-test/static/js/main.fcb26880.js",
+    "static/js/787.ce5692dd.chunk.js": "/west-solutions-test/static/js/787.ce5692dd.chunk.js",
+    "index.html": "/west-solutions-test/index.html",
+    "main.c130e6d7.css.map": "/west-solutions-test/static/css/main.c130e6d7.css.map",
+    "main.fcb26880.js.map": "/west-solutions-test/static/js/main.fcb26880.js.map",
+    "787.ce5692dd.chunk.js.map": "/west-solutions-test/static/js/787.ce5692dd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c130e6d7.css",
-    "static/js/main.c2201743.js"
+    "static/js/main.fcb26880.js"
   ]
 }
