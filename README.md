@@ -1,6 +1,7 @@
 # WWWEST-SOLUTIONS TEST TASK #
-### [APP ON FIREBASE HOSTING](https://west-solutions.web.app) ###
+### [APP ON FIREBASE HOSTING](https://west-solutions.web.app) (API is not working) ###
 login: **user@gmail.com**
+
 password: **123456**
 ## IN THIS PROJECT I USED ##
 - TYPESCRIPT
