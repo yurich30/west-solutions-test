@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import { CustomContainer } from '../../components/CustomComponents/CustomContainer.styled';
 import { auth } from '../../firebase';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -13,6 +14,7 @@ import {
   authFetchingError,
   authFetchingSucces,
 } from '../../store/reducers/authReducer';
+import 'react-toastify/dist/ReactToastify.css';
 
 const validationSchema = yup.object({
   email: yup
@@ -51,12 +53,34 @@ function LoginPage() {
         navigate('/profile');
       } catch (err) {
         dispatch(authFetchingError(err));
+        toast.error('The username or password you entered is incorrect', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     },
   });
 
   return (
     <CustomContainer maxWidth='xl'>
+      {error && (
+        <ToastContainer
+          position='top-center'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      )}
       <form onSubmit={formik.handleSubmit}>
         <TextField
           fullWidth
@@ -81,11 +105,6 @@ function LoginPage() {
           helperText={formik.touched.password && formik.errors.password}
           margin='normal'
         />
-        {error && (
-          <div style={{ color: 'red' }}>
-            The username or password you entered is incorrect
-          </div>
-        )}
         <Button
           color='primary'
           variant='contained'
