@@ -2,7 +2,25 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AuthState } from '../../types/IAuthState';
 
 const initialState: AuthState = {
-  user: {},
+  user: {
+    accessToken: '',
+    email: '',
+    auth: {},
+    displayName: '',
+    emailVerified: false,
+    isAnonymous: false,
+    metadata: {},
+    phoneNumber: '',
+    photoURL: '',
+    proactiveRefresh: {},
+    providerData: [],
+    providerId: '',
+    reloadListener: '',
+    reloadUserInfo: {},
+    stsTokenManager: {},
+    tenantId: '',
+    uid: '',
+  },
   error: '',
   isLoading: false,
 };

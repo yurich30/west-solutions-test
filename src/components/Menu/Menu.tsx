@@ -32,11 +32,31 @@ function AppMenu() {
     null,
   );
 
+  const emptyUser = {
+    accessToken: '',
+    email: '',
+    auth: {},
+    displayName: '',
+    emailVerified: false,
+    isAnonymous: false,
+    metadata: {},
+    phoneNumber: '',
+    photoURL: '',
+    proactiveRefresh: {},
+    providerData: [],
+    providerId: '',
+    reloadListener: '',
+    reloadUserInfo: {},
+    stsTokenManager: {},
+    tenantId: '',
+    uid: '',
+  };
+
   const logOut = async () => {
     try {
       dispatch(authFetching());
       await signOut(auth);
-      dispatch(authFetchingSucces({}));
+      dispatch(authFetchingSucces(emptyUser));
     } catch (error) {
       dispatch(authFetchingError(error));
     }

@@ -5,9 +5,9 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { Container } from '@mui/material';
+import { CustomContainer } from '../../components/CustomComponents/CustomContainer.styled';
 import { auth } from '../../firebase';
-import { useAppDispatch } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   authFetching,
   authFetchingError,
@@ -30,6 +30,7 @@ const validationSchema = yup.object({
 function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { error } = useAppSelector(state => state.auth);
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -48,14 +49,14 @@ function LoginPage() {
         const { user } = userCredential;
         dispatch(authFetchingSucces(user));
         navigate('/profile');
-      } catch (error) {
-        dispatch(authFetchingError(error));
+      } catch (err) {
+        dispatch(authFetchingError(err));
       }
     },
   });
 
   return (
-    <Container maxWidth='xl'>
+    <CustomContainer maxWidth='xl'>
       <form onSubmit={formik.handleSubmit}>
         <TextField
           fullWidth
@@ -66,6 +67,7 @@ function LoginPage() {
           onChange={formik.handleChange}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          margin='normal'
         />
         <TextField
           fullWidth
@@ -77,12 +79,24 @@ function LoginPage() {
           onChange={formik.handleChange}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          margin='normal'
         />
-        <Button color='primary' variant='contained' fullWidth type='submit'>
+        {error && (
+          <div style={{ color: 'red' }}>
+            The username or password you entered is incorrect
+          </div>
+        )}
+        <Button
+          color='primary'
+          variant='contained'
+          fullWidth
+          type='submit'
+          style={{ marginTop: '32px' }}
+        >
           Submit
         </Button>
       </form>
-    </Container>
+    </CustomContainer>
   );
 }
 
