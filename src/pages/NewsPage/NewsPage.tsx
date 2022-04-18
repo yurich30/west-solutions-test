@@ -8,7 +8,7 @@ import { CustomContainer } from './NewsPage.styled';
 import 'react-toastify/dist/ReactToastify.css';
 
 function NewsPage() {
-  const { data, error, isLoading } = useGetHeadlinesByCountryQuery('');
+  const { data, error, isLoading } = useGetHeadlinesByCountryQuery('us');
 
   const toastMess = () =>
     toast.error(
